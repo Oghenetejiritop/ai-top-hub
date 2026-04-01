@@ -1,3 +1,7 @@
+# Ignore local testing files
+ai_top_hub/providers/mock_provider.py
+ai_top_hub/core/llm.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
