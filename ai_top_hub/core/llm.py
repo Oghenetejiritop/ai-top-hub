@@ -3,17 +3,20 @@ from ai_top_hub.providers.claude_provider import ClaudeProvider
 from ai_top_hub.providers.openai_provider import OpenAIProvider
 
 
-def get_llm_provider(provider: str) -> BaseLLMProvider:
+def get_llm_provider(provider: str) -> type[BaseLLMProvider]:
     """
-    Factory function to return the appropriate LLM provider instance.
+    Returns the LLM provider class (not instance).
+    Allows user to initialize with custom parameters.
     """
 
     provider = provider.lower().strip()
 
-    match provider:
-        case "claude":
-            return ClaudeProvider()
-        case "openai":
-            return OpenAIProvider()
-        case _:
-            raise ValueError(f"Unsupported provider: {provider}")
+    providers = {
+        "claude": ClaudeProvider,
+        "openai": OpenAIProvider,
+    }
+
+    if provider not in providers:
+        raise ValueError(f"Unsupported provider: {provider}")
+
+    return providers[provider]
