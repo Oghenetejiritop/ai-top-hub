@@ -3,6 +3,14 @@ from ai_top_hub.providers.claude_provider import ClaudeProvider
 from ai_top_hub.providers.openai_provider import OpenAIProvider
 
 
+def create_llm(provider: str, **kwargs) -> BaseLLMProvider:
+    """
+    Returns an initialized LLM provider instance.
+    """
+    provider_class = get_llm_provider(provider)
+    return provider_class(**kwargs)
+ 
+
 def get_llm_provider(provider: str) -> type[BaseLLMProvider]:
     """
     Returns the LLM provider class (not instance).
