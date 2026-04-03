@@ -95,28 +95,17 @@ print(response)
 
 
 ## ai_top_hub/
-• 
-providers/
-• 
-base_provider.py # Abstract base class
-• 
-openai_provider.py # OpenAI implementation
-• 
-claude_provider.py # Claude implementation
-• 
-mock_provider.py # Mock provider for testing
-• 
-core/
-• 
-llm.py # Provider factory and interface logic
-• 
-utils/ # Configuration helpers (future use)
-• 
-exceptions/ # Custom exception handling (future use)
-• 
-README.md
-• 
-requirements.txt
+* providers/
+  * base_provider.py # Abstract base class
+  * openai_provider.py # OpenAI implementation
+  * claude_provider.py # Claude implementation
+  * mock_provider.py # Mock provider for testing
+* core/
+  * llm.py # Provider factory and interface logic
+* utils/ # Configuration helpers (future use)
+* exceptions/ # Custom exception handling (future use)
+* README.md
+* requirements.txt
  
 ### Roadmap
 * Add support for additional providers (Meta AI, Grok, etc.)
