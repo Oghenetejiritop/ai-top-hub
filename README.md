@@ -91,6 +91,7 @@ llm = create_llm("openai", model="gpt-4o-mini")
 
 response = llm.generate("What is machine learning?")
 print(response)
+```
 
 
 ## ai_top_hub/
