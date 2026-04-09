@@ -7,15 +7,22 @@ class OpenAIProvider(BaseLLMProvider):
     OpenAI implementation of the BaseLLMProvider.
     """
 
-    def __init__(self, model: str = "gpt-4o-mini", api_key: str | None = None):
+    def __init__(
+        self,
+        model: str = "gpt-4o-mini",
+        max_tokens: int = 100,
+        temperature: float = 0.5,
+        top_p: float = 1.0,
+        api_key: str | None = None
+    ):
         super().__init__(provider_name="openai")
 
-        if api_key:
-            self._client = OpenAI(api_key=api_key)
-        else:
-            self._client = OpenAI()
+        self._client = OpenAI(api_key=api_key) if api_key else OpenAI()
 
         self._model = model
+        self._max_tokens = max_tokens
+        self._temperature = temperature
+        self._top_p = top_p
 
     def generate(self, prompt: str) -> str:
         """
@@ -31,8 +38,12 @@ class OpenAIProvider(BaseLLMProvider):
                 messages=[
                     {
                         "role": "user",
-                        "content": prompt}
-                ]
+                        "content": prompt
+                    }
+                ],
+                max_tokens=self._max_tokens,
+                temperature=self._temperature,
+                top_p=self._top_p
             )
 
             content: str | None = response.choices[0].message.content
