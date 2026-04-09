@@ -1,4 +1,5 @@
 # Ignore local testing files
+mock_provider.py
 ai_top_hub/providers/mock_provider.py
 
 # Byte-compiled / optimized / DLL files
